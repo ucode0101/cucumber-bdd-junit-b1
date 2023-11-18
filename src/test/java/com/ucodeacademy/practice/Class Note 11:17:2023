@@ -1,0 +1,141 @@
+
+Class Note 11/17/2023
+
+Today's Topic:
+Create New Framework:
+- Behavior-Driven Development (BDD) & Page Object Model (POM) framework
+- Add JUnit dependancy 
+- Add Cucumber dependancy (cucumber BDD)
+- Page Object Model (POM)
+- Create other folders/packages
+- Create .properties file
+
+----------------------------------------------------------------
+
+What is Data-Driven Testing (DDT) ?
+Data-Driver Testing is when you get your test data externally/outside of your code such as Excel or CSV file.
+
+In TestNG @DataProvider allows to achieve Data-Driven Testing.
+
+@Test(dataProvider = "TestData", dataProviderClass = DataProviderTest.class) ->
+From any package/class we can call/access this dataProvide and do Data-Drivent Testing.
+
+
+
+--------------------------------------------------------------
+
+
+Framework Creattion:
+
+1. IntelliJ IDEA File -> new -> project
+2. project name, Build System Maven click on Create
+3. Add dependancies ->  Selenium 4.11.0, JUnit, Cucumber-java, Cucumber-juni
+
+-----------------------------------------------------------------------
+
+Page Object Model (POM) -> Is to create a class for each page of the application locate and store all the web elements related to that page in its own class.
+We also create methods related to that page and store it in its own class
+We create a package name -> pages and create all page classes inside this package
+
+
+
+test_runner package: We create Test runner class inside this package, and we run all our tests from one single class.
+
+step_definitions/test_steps package: This package where we create all our Test/step_definitions and write the code/assertion/validation here
+
+util/utility package: where we write all our reusable classes and methods including Singleton.
+
+data/configuration .properites file: we create this file in project level.
+.properties file is used to store and controll all our test data in single file.
+We create a class name -> DataReader/ConfigReader to get/read the data from .properties file.
+
+resources folder/directory: This folder is created under test folder.
+We use this folder to store all our to store feature file, drivers, and any other data relatted to our testing.
+
+
+Single Design Patter -> the whold idea of Signleton is to makes to use one instance for the whole project. We need to create private constructor to prevent creating an instance/object from that class.
+
+In Our case we to make sure to use one driver instance for the whole project
+
+-----------------------------------------------------------
+
+There is small difference in Annotations names JUnit 4 & JUnit 5, but they all work exactly the same.
+
+JUnit 4: 
+JUnit is Unit testing framework for java programming language (Like TestNG).
+JUnit provides annotations to identify test methods, assertions for testing.
+JUnit has annotations and assertions like TestNG.
+
+@Test -> This annotation allows us to run our Java methods as JUnit test without having main method.
+
+
+
+@Before -> this annotation runs before each @Test/method.
+
+ @BeforeClass -> this annotation runs before class.
+ The method that has @BeforeClass has to be static otherwise your 
+ class/test fails when you run it
+
+ @After -> This annotation run after each @Test/method.
+
+ @AfterClass -> This annotation runs after class.
+ The method that has @AfterClass has to be static otherwise your 
+ class/test fails when you run it
+
+ @Ignore -> This annotation ignores the @Test/method.
+ If we put this on top of any @Test/method, that would not run
+
+ @Test(timeout = millisecond) -> you test fails if it doesn't finish/complet with the given time
+
+ @Test(expected = ExceptionName.class);-> this is used to tell/let JUnit know that we are expecting specified Exception during test, so JUnit will ignore that exception during the test
+
+JUnit assertion class:
+
+Assert.assertTrue( "Failed", 5 > 3); -> This assertion takes boolean condition, and failed message (optional) if it fails the message will be print.
+
+Assert.assertEquals(10,11); -> This method takes 3 parameters, first is failed message (optional), second is expected, and third is actual.
+Expected and actual can be the same data or different types
+
+Assert.assertArrayEquals(array, array); This method takes 3 parameters, first is failed message (optional), second is expected Array, and third is actual Array.
+Expected and actual can be the same data or different types
+
+-----------------------------------------------------------------
+Our frame is BDD and Page Object Model Framework.
+
+Our Framework is created as maven project which allows us to add and manage all our dependencies in pom.xml file. We use selenium WebDriver for web automaiton, and Java as programming language, JUnit for assertion and annoation, Cucumber to write features in Ghergen Language...... 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
