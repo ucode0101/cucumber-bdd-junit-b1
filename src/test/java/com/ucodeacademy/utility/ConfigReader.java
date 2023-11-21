@@ -4,13 +4,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class DataReader {
+public class ConfigReader {
 
     private static Properties properties = new Properties();
 
     static {
         // path to the file as string
-        String path = "data.properties";
+        String path = "config.properties";
 
         try {
 

@@ -20,8 +20,8 @@ public class Driver {
 
         if (driver == null){
 
-            // to get the browser name from .properites file
-            String browserName = DataReader.getProperty("browser");
+            // to get the browser name from .properties file
+            String browserName = ConfigReader.getProperty("browser");
             browserName = browserName.toLowerCase();
 
             switch (browserName){
