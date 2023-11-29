@@ -1,4 +1,4 @@
-@background2
+@parallel
 Feature: Login feature with multiple users
 
   # Three repeated steps in both scenarios, we added in Background

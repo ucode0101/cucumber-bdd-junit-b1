@@ -1,6 +1,7 @@
-@link
+
 Feature: Find Elements
   As a User I want to be able locate all the web elements so that I can print
+
 
   Scenario: Verify all link
     When User is on the merriam home page

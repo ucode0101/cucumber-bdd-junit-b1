@@ -13,8 +13,37 @@ public class Driver {
     private Driver(){
 
     }
+//    private static Driver INSTANCE;
+//    public static synchronized Driver getInstance(){
+//        if (INSTANCE == null){
+//            INSTANCE = new Driver();
+//        }
+//        return INSTANCE;
+//    }
+//
+//    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+//
+//
+//
+//
+//    public static WebDriver getDriver() {
+//        if (webDriverThreadLocal.get() == null) {
+//            webDriverThreadLocal.set(new ChromeDriver());
+//        }
+//        return webDriverThreadLocal.get();
+//    }
+//
+//    public static void quitDriver() {
+//        WebDriver driver = webDriverThreadLocal.get();
+//        if (driver != null) {
+//            driver.quit();
+//            webDriverThreadLocal.remove();
+//        }
+//    }
+
 
     private static WebDriver driver;
+
 
     public static WebDriver getDriver(){
 
@@ -52,6 +81,7 @@ public class Driver {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         return driver;
+        //return threadLocal.get();
 
     }
 
