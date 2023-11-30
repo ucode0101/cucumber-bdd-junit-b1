@@ -1,5 +1,4 @@
 
-@parallel
 Feature: google search functionality
 
 

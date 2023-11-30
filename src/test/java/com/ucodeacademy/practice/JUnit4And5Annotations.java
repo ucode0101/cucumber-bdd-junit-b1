@@ -1,12 +1,10 @@
 package com.ucodeacademy.practice;
 
-import org.junit.*;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Test;
+
 
 public class JUnit4And5Annotations {
 
-    @Test // Mark the method as a test method JUnit 4 & JUnit 5
+   // @Test // Mark the method as a test method JUnit 4 & JUnit 5
 
     // @Before // runs before each method JUnit 4
     // @BeforeEach // runs before each method JUnit 5

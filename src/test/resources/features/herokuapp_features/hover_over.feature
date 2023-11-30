@@ -1,4 +1,4 @@
-@parallel
+@hover
 Feature: Hover over functionality
 
 

@@ -44,4 +44,30 @@ public class Hooks {
             scenario.attach(screenshot,"image/png",scenario.getName());
         }
     }
+
+//    @After
+//    public void eachStep(Scenario scenario){
+//        byte [] image = ((TakesScreenshot) Driver.getDriver() ).getScreenshotAs(OutputType.BYTES);
+//        scenario.attach(image, "image/png",scenario.getName());
+//    }
+//
+//    // hooks for specific scenario
+//    @Before(value = "@outline")
+//    public void before(Scenario scenario){
+//
+//        System.out.println(scenario.getName());
+//        byte [] screenshot = ( (TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+//        scenario.attach(screenshot,"image/png",scenario.getName());
+//
+//    }
+//
+//    // hooks for specific scenario
+//    @After(value = "@outline")
+//    public void after(Scenario scenario){
+//
+//        System.out.println(scenario.getName());
+//        byte [] screenshot = ( (TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+//        scenario.attach(screenshot,"image/png",scenario.getName());
+//
+//    }
 }

@@ -1,4 +1,4 @@
-@google
+
 Feature: Google search functionality
 
   Background:
@@ -10,7 +10,7 @@ Feature: Google search functionality
     Then User should be able to sea "java" in the title
 
   @outline
-  Scenario Outline: Verify search with multiple inputs
+  Scenario Template: Verify search with multiple inputs
     And User searches for an "<item>"
     Then User should see "<itemName>" in page title
     Examples:

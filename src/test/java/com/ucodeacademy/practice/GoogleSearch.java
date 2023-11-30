@@ -4,7 +4,8 @@ import com.ucodeacademy.pages.GoogleSearchPage;
 import com.ucodeacademy.utility.ConfigReader;
 import com.ucodeacademy.utility.Driver;
 import com.ucodeacademy.utility.Waits;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

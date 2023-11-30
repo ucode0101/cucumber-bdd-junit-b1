@@ -13,82 +13,106 @@ public class Driver {
     private Driver(){
 
     }
-//    private static Driver INSTANCE;
-//    public static synchronized Driver getInstance(){
-//        if (INSTANCE == null){
-//            INSTANCE = new Driver();
+//
+//    private static WebDriver driver;
+//
+//
+//    public static WebDriver getDriver(){
+//
+//        if (driver == null){
+//
+//            // to get the browser name from .properties file
+//            String browserName = ConfigReader.getProperty("browser");
+//            browserName = browserName.toLowerCase();
+//
+//            switch (browserName){
+//                case "chrome":
+//                    driver = new ChromeDriver();
+//                    break;
+//                case "firefox":
+//                    driver = new FirefoxDriver();
+//                    break;
+//                case "safari":
+//                    driver = new SafariDriver();
+//                    break;
+//                case "edge":
+//                    driver = new EdgeDriver();
+//                    break;
+//                case "chrome-headless":
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.addArguments("--headless");
+//                    driver = new ChromeDriver(options);
+//                    //driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+//
+//                    break;
+//                default:
+//                    driver = new ChromeDriver();
+//            }
+//
+//
 //        }
-//        return INSTANCE;
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//
+//        return driver;
+//
+//
 //    }
 //
-//    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
-//
-//
-//
-//
-//    public static WebDriver getDriver() {
-//        if (webDriverThreadLocal.get() == null) {
-//            webDriverThreadLocal.set(new ChromeDriver());
-//        }
-//        return webDriverThreadLocal.get();
-//    }
-//
-//    public static void quitDriver() {
-//        WebDriver driver = webDriverThreadLocal.get();
-//        if (driver != null) {
+//    public static void quitDriver(){
+//        if (driver != null){
 //            driver.quit();
-//            webDriverThreadLocal.remove();
+//            driver = null;
 //        }
 //    }
 
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
+    public static WebDriver getDriver() {
+        // Check if the threadLocalDriver has already been initialized for this thread
+        if (threadLocalDriver.get() == null) {
+            // If not initialized, create a new instance based on the browser name
+            String browserName = ConfigReader.getProperty("browser").toLowerCase();
 
-    public static WebDriver getDriver(){
-
-        if (driver == null){
-
-            // to get the browser name from .properties file
-            String browserName = ConfigReader.getProperty("browser");
-            browserName = browserName.toLowerCase();
-
-            switch (browserName){
+            switch (browserName) {
                 case "chrome":
-                    driver = new ChromeDriver();
+                    threadLocalDriver.set(new ChromeDriver());
                     break;
                 case "firefox":
-                    driver = new FirefoxDriver();
+                    threadLocalDriver.set(new FirefoxDriver());
                     break;
                 case "safari":
-                    driver = new SafariDriver();
+                    threadLocalDriver.set(new SafariDriver());
                     break;
                 case "edge":
-                    driver = new EdgeDriver();
+                    threadLocalDriver.set(new EdgeDriver());
                     break;
                 case "chrome-headless":
-                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--headless");
+                    threadLocalDriver.set(new ChromeDriver(options));
                     break;
                 default:
-                    driver = new ChromeDriver();
+                    threadLocalDriver.set(new ChromeDriver());
             }
-
-
-
-
         }
+
+        // Configure the WebDriver instance
+        WebDriver driver = threadLocalDriver.get();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         return driver;
-        //return threadLocal.get();
-
     }
 
-    public static void quitDriver(){
-        if (driver != null){
+    // Add a method to quit the WebDriver instance at the end of the test
+    public static void quitDriver() {
+        WebDriver driver = threadLocalDriver.get();
+        if (driver != null) {
             driver.quit();
-            driver = null;
+            // Remove the WebDriver instance from the ThreadLocal to avoid memory leaks
+            threadLocalDriver.remove();
         }
     }
 
