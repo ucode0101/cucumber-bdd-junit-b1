@@ -3,6 +3,7 @@ package com.ucodeacademy.step_definitions;
 import com.ucodeacademy.pages.AddRemoveElementsPage;
 import com.ucodeacademy.utility.ConfigReader;
 import com.ucodeacademy.utility.Driver;
+import com.ucodeacademy.utility.Waits;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,6 +59,7 @@ public class AddRemoveElementStepDef {
             System.out.println("Delete button is not displayed");
         }
 
+        Waits.wait(15);
         Driver.quitDriver();
 
     }

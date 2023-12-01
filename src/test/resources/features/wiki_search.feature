@@ -1,4 +1,4 @@
-@wiki
+@parallel
 Feature: Wikipedia search
   As a User I want to have search functionality in wiki page so I can search
 

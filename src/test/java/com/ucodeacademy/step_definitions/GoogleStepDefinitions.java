@@ -24,7 +24,7 @@ public class GoogleStepDefinitions {
     @Then("User should be able to sea {string} in the title")
     public void user_should_be_able_to_sea_in_the_title(String expectedTitle) {
         String actualTitle = Driver.getDriver().getTitle();
-        Assert.assertTrue("Title does not Contain!",!actualTitle.contains(expectedTitle));
+        Assert.assertTrue("Title does not Contain!",actualTitle.contains(expectedTitle));
 
         Driver.quitDriver();
     }

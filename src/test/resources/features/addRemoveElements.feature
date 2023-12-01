@@ -4,6 +4,7 @@ Feature: Add Remove WebElement verification
 
 
 
+  @addRemove
   Scenario: Verify add remove web element functionality
     Given User is on the internet home page
     When User clicks on addRemove element button
