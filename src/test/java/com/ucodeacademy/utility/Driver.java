@@ -126,6 +126,7 @@ public class Driver {
                         e.getStackTrace();
                         throw new RuntimeException("Remote Web Driver is not working");
                     }
+                    break;
 
                 default:
                     threadLocalDriver.set(new ChromeDriver());
