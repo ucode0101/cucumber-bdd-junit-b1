@@ -112,14 +112,15 @@ public class Driver {
                     options.addArguments("--headless");
                     threadLocalDriver.set(new ChromeDriver(options));
                     break;
-                case "chrome-remote":
+                case "remote":
 
                     DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setBrowserName("chrome");
+                    capabilities.setBrowserName("safari");
                     capabilities.setPlatform(Platform.ANY);
                     try {
 
                         URL url = new URL("http://localhost:4444/wd/hub");
+
                         threadLocalDriver.set(new RemoteWebDriver(url,capabilities));
 
                     } catch (Exception e){
