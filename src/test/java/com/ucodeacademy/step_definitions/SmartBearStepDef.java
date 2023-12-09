@@ -20,8 +20,11 @@ public class SmartBearStepDef {
     @When("User enters username {string} and password {string}")
     public void user_enters_username_and_password(String username, String password) {
         // entering username, password, and clicking on login button manually
-        loginPage.usernameInput.sendKeys(username);
-        loginPage.passwordInput.sendKeys(password);
+//        loginPage.usernameInput.sendKeys(username);
+//        loginPage.passwordInput.sendKeys(password);
+
+        // calling custom method form BasePage to enter username and password
+        loginPage.enterUsernameAndPwd(loginPage.usernameInput, loginPage.passwordInput,username,password );
 
 
         // calling custom method form SmartBearLoginPage to login
@@ -32,12 +35,17 @@ public class SmartBearStepDef {
     @When("User Clicks on login button")
     public void user_clicks_on_login_button() {
 
-        loginPage.loginButton.click();
+        //loginPage.loginButton.click();
+
+        loginPage.clickOn(loginPage.loginButton);
     }
     @Then("User should be logged in successfully")
     public void user_should_be_logged_in_successfully() {
 
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("weborders"));
+        // calling the method from BasePage to get current url
+        String currentUrl = loginPage.getCurrentUrl();
+
+        Assert.assertTrue(currentUrl.contains("weborders"));
         Driver.quitDriver();
 
     }
@@ -46,7 +54,9 @@ public class SmartBearStepDef {
     public void user_sees_all_orders() {
         // driver.getTitle() -> we used to do this way
         // Driver.getDriver() == driver
-        String actualTile = Driver.getDriver().getTitle();
+        //String actualTile = Driver.getDriver().getTitle();
+
+        String actualTile = loginPage.getTitleOfThePage();
 
         // to fail the test on purpose add (!), so we can run it from FailedTestRunner class
         Assert.assertTrue("Title does not Contain",actualTile.contains("Web Orders"));

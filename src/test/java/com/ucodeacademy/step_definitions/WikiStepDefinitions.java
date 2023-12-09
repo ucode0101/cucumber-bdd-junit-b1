@@ -16,18 +16,18 @@ public class WikiStepDefinitions {
     @Given("User is on wiki home page")
     public void user_is_on_wiki_home_page() {
         Driver.getDriver().get(ConfigReader.getProperty("wiki.url"));
-        Waits.wait(3);
+        new Waits().wait(3);
 
     }
     @Given("User types {string} in search box")
     public void user_types_in_search_box(String searchValue) {
 
         wikiPage.searchBox.sendKeys(searchValue );
-        Waits.wait(3);
+        new Waits().wait(3);
 
         wikiPage.searchButton.click();
 
-        Waits.wait(3);
+        new Waits().wait(3);
 
 
     }

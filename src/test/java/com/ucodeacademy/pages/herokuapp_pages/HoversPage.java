@@ -1,11 +1,12 @@
 package com.ucodeacademy.pages.herokuapp_pages;
 
+import com.ucodeacademy.pages.BasePage;
 import com.ucodeacademy.utility.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HoversPage {
+public class HoversPage extends BasePage {
 
     public HoversPage(){
         PageFactory.initElements(Driver.getDriver(), this);

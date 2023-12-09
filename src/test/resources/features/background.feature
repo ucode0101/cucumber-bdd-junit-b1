@@ -1,4 +1,4 @@
-@parallel
+@smart
 Feature: Login feature with multiple users
 
 #  One repeated step in both scenarios, we added in Background

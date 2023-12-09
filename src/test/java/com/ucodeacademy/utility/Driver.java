@@ -6,8 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.Browser;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -86,7 +84,7 @@ public class Driver {
 //    }
 
 
-    private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+    private static  ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
         // Check if the threadLocalDriver has already been initialized for this thread
@@ -115,7 +113,7 @@ public class Driver {
                 case "remote":
 
                     DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setBrowserName("safari");
+                    capabilities.setBrowserName("chrome");
                     capabilities.setPlatform(Platform.ANY);
                     try {
 
@@ -124,13 +122,14 @@ public class Driver {
                         threadLocalDriver.set(new RemoteWebDriver(url,capabilities));
 
                     } catch (Exception e){
-                        e.getStackTrace();
+                        e.printStackTrace();
+
                         throw new RuntimeException("Remote Web Driver is not working");
                     }
                     break;
 
                 default:
-                    threadLocalDriver.set(new ChromeDriver());
+                    throw new RuntimeException("Invalid browser name");
             }
         }
 

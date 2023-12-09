@@ -13,7 +13,7 @@ public class SimpleTest {
         String url = ConfigReader.getProperty("googleUrl");
         Driver.getDriver().get(url);
 
-        Waits.wait(3);
+        new Waits().wait(3);
 
         Driver.quitDriver();
     }

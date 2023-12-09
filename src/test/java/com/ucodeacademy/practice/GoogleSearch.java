@@ -24,7 +24,8 @@ public class GoogleSearch {
 
         Driver.getDriver().navigate().refresh();
 
-        Waits.wait(2);
+        // calling instance method through new
+        new Waits().wait(2);
         searchBox.sendKeys("java"+ Keys.ENTER);
     }
 
@@ -36,12 +37,12 @@ public class GoogleSearch {
         Driver.getDriver().get(ConfigReader.getProperty("googleUrl"));
 
         Driver.getDriver().navigate().refresh();
-        Waits.wait(2);
+        new Waits().wait(2);
 
         googleSearchPage.searchBox.sendKeys("java");
 
         Driver.getDriver().navigate().refresh();
-        Waits.wait(2);
+        new Waits().wait(2);
         googleSearchPage.searchBox.sendKeys("JUnit");
 
 

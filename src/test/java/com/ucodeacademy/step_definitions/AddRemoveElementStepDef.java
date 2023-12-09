@@ -25,23 +25,36 @@ public class AddRemoveElementStepDef {
     }
     @When("User clicks on addRemove element button")
     public void user_clicks_on_add_remove_element_button() {
-        addRemoveElementsPage.addRemoveButton.click();
+        //addRemoveElementsPage.addRemoveButton.click();
+
+        // We are using clickOn from Parent class, which takes care of explicit wait
+        addRemoveElementsPage.clickOn(addRemoveElementsPage.addRemoveButton);
+
 
     }
     @When("User clicks on Added element button")
     public void user_clicks_on_added_element_button() {
-        addRemoveElementsPage.addButton.click();
+       // addRemoveElementsPage.addButton.click();
+
+        // We are using clickOn from Parent class, which takes care of explicit wait
+        addRemoveElementsPage.clickOn(addRemoveElementsPage.addButton);
 
     }
     @Then("A new button should be displayed")
     public void a_new_button_should_be_displayed() {
 
-        Assert.assertTrue(addRemoveElementsPage.deleteButton.isDisplayed());
+        //Assert.assertTrue(addRemoveElementsPage.deleteButton.isDisplayed());
+
+        // We are using iisElementDisplayed from Parent class
+        Assert.assertTrue(addRemoveElementsPage.isElementDisplayed(addRemoveElementsPage.deleteButton));
 
     }
     @Then("User click on Delete button")
     public void user_click_on_delete_button() {
-        addRemoveElementsPage.deleteButton.click();
+        //addRemoveElementsPage.deleteButton.click();
+
+        // We are using clickOn from Parent class, which takes care of explicit wait
+        addRemoveElementsPage.clickOn(addRemoveElementsPage.deleteButton);
 
     }
     @Then("Element should be deleted")
@@ -52,14 +65,21 @@ public class AddRemoveElementStepDef {
         // to verify delete button is Not displayed
 
         try {
-            Assert.assertFalse(addRemoveElementsPage.deleteButton.isDisplayed());
+
+            //Assert.assertFalse(addRemoveElementsPage.deleteButton.isDisplayed());
+
+            // We are using iisElementDisplayed from Parent class
+            Assert.assertTrue(addRemoveElementsPage.isElementDisplayed(addRemoveElementsPage.deleteButton));
 
         } catch (Exception e){
             e.getStackTrace();
             System.out.println("Delete button is not displayed");
         }
 
-        Waits.wait(15);
+        //Waits.wait(15);
+
+        // made wait instance in Wait class, and inherit it from BasePage class
+        addRemoveElementsPage.wait(15);
         Driver.quitDriver();
 
     }
