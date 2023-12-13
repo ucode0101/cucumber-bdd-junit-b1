@@ -4,5 +4,5 @@
 * Cucumber, JUint.
 * Following Page Object Model (POM), Singleton Design Pattern
 * To run specific feature/scenario from TestRunner class using tags
-* Using maven sure-fire plugin to tests in parallel "mvn test"
+* Using maven sure-fire plugin to tests in parallel `mvn test`
 
