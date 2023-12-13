@@ -19,5 +19,5 @@ public class AddRemoveElementsPage extends BasePage {
     @FindBy(xpath = "//button[@class='added-manually']")
     public WebElement deleteButton;
 
-
+// Test
 }
