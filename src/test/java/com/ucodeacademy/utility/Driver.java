@@ -117,7 +117,7 @@ public class Driver {
                     capabilities.setPlatform(Platform.ANY);
                     try {
 
-                        URL url = new URL("http://localhost:4444/wd/hub");
+                        URL url = new URL("http://100.26.214.17:4444/wd/hub");
 
                         threadLocalDriver.set(new RemoteWebDriver(url,capabilities));
 
