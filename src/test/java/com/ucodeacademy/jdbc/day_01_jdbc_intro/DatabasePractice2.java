@@ -1,11 +1,11 @@
-package com.ucodeacademy.jdbc.day_01;
+package com.ucodeacademy.jdbc.day_01_jdbc_intro;
 
 import org.junit.Test;
 
 import java.sql.*;
 
 public class DatabasePractice2 {
-    String dbUrl = "jdbc:oracle:thin:@18.206.197.33:1521/xepdb1";
+    String dbUrl = "jdbc:oracle:thin:@54.152.93.91:1521/xepdb1";
     String username = "hr";
     String password = "hr";
 
@@ -39,7 +39,9 @@ public class DatabasePractice2 {
 
         resultSet.last(); // is used to move the cursor to the last row in the resultSet (from any row/anywhere)
         System.out.println(resultSet.getString("first_name"));
-
+        statement.close();
+        connection.close();
+        resultSet.close();
 
 
     }

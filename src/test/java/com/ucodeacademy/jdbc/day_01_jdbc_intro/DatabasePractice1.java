@@ -1,4 +1,4 @@
-package com.ucodeacademy.jdbc.day_01;
+package com.ucodeacademy.jdbc.day_01_jdbc_intro;
 
 import org.junit.Test;
 
